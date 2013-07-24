@@ -29,6 +29,7 @@ PATH=$AUTO_DIR/cmds:$AUTO_DIR/bin:$PATH
 
 So if you want `auto` to live somewhere else, e.g. `$HOME/local/` then
 just alter `auto.env.sh` accordingly.
+
 ---
 
 ## Extra Steps
