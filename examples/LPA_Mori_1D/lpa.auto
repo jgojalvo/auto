@@ -1,0 +1,26 @@
+# May 4, 2012
+# Georg Walther
+
+system=load('lpa')
+
+sol_forward=run(system, ICP=['tot'], IPS=1, RL0=0, RL1=4, DS='');
+sol_backward=run(system, ICP=['tot'], IPS=1, RL0=0, RL1=4, DS='-');
+
+p_sol = plot(merge(sol_forward + sol_backward), type='bifurcation', hide=False, use_labels=False, stability=True, bifurcation_x=['aL'], bifurcation_y=['aR'], bifurcation_z=['tot'], minz = 0.0, maxz=4, minx=0.0, miny=0.0, maxx=2, maxy=2);
+
+p_sol_2D = plot(merge(sol_forward + sol_backward), type='bifurcation', hide=False, use_labels=False, stability=True, bifurcation_y=['aL'], bifurcation_x=['tot'], minx=0.0, miny=0.0, maxx=4, maxy=2);
+
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+inner_branch = sol_forward[0]
+
+p = ax.plot(inner_branch['aL'], inner_branch['aR'], inner_branch['tot'])
+plt.xlabel('al')
+plt.ylabel('aG')
+plt.zlabel('tot')
+
+plt.show()
